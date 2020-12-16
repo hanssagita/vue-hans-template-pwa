@@ -12,7 +12,7 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
+          Welcome to Vuetify test
         </h1>
 
         <p class="subheading font-weight-regular">
@@ -86,15 +86,20 @@
             {{ eco.text }}
           </a>
         </v-row>
+        <v-row justify="center">
+          <p>
+            {{ dummy }}
+          </p>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'HelloWorld',
-
   data: () => ({
     ecosystem: [
       {
@@ -146,6 +151,18 @@ export default {
         href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions'
       }
     ]
-  })
+  }),
+  created () {
+    this.init()
+  },
+  computed: {
+    ...mapGetters('dummy', ['dummy'])
+  },
+  methods: {
+    ...mapActions('dummy', ['getDummy']),
+    init () {
+      this.getDummy()
+    }
+  }
 }
 </script>

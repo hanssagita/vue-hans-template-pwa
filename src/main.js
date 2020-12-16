@@ -5,6 +5,8 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
+if (!process.env.NODE_ENV !== 'production') require('@/api-mock')
+
 Vue.config.productionTip = false
 
 new Vue({
